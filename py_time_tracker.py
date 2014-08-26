@@ -1,6 +1,5 @@
-import datetime
+import time, math, sys, os
 from os.path import expanduser
-import sys, os
 
 class py_Time_Tracker(object):
     """
@@ -19,6 +18,19 @@ class py_Time_Tracker(object):
         if not os.path.isdir(mPath):
             os.makedirs(mPath)
 
-    def start_tracking(self, entry_name):
+    def format_time(num):
+        num = math.floor(num)
+        if x < 10:
+            str_num = "0" + str(num)
+        else:
+            str_num = str(num)
+        return str_num
 
-        
+    def start_tracking(self, entry_name):
+        print("Starting " + entry_name)
+        start = time.perf_counter()
+        input("Press enter to stop " + entry_name + "...")
+        elapsed = (time.perf_counter() - start)
+
+        elapsed_time = format_time(elapsed/60) + ":" + format_time(elapsed%60)
+
